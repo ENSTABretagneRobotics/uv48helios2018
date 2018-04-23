@@ -153,13 +153,13 @@ int main(int argc, char *argv [])
 
         if(true)  //Condition de fonctionnement (diagramme d'état)
         {
-            left_mot 	= u_gauche;
+            left_mot    = u_gauche;
             right_mot = u_droite;
         }
 
         else {
-            left_mot 	= 4000.0;
-            right_mot 	= 4000.0;
+            left_mot    = 4000.0;
+            right_mot   = 4000.0;
         }
 
         left_mot_msgs.data = left_mot;
