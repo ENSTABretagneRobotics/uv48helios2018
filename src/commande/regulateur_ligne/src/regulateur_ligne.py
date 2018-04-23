@@ -1,21 +1,13 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar  6 20:56:04 2018
+#!/usr/bin/env python3
 
-@author: Louis
-"""
-
-from numpy import mean,pi,cos,sin,sqrt,tan,arctan,arctan2,tanh,arcsin,\
-                    exp,dot,array,log,inf, eye, zeros, ones, inf,size,\
-                    arange,reshape,concatenate,vstack,hstack,diag,median,sign,sum,meshgrid,cross,linspace,append,round
+from numpy import mean,pi,cos,sin,sqrt,tan,arctan,arctan2,tanh,arcsin,exp,dot,array,log,inf, eye, zeros, ones, inf,size,arange,reshape,concatenate,vstack,hstack,diag,median,sign,sum,meshgrid,cross,linspace,append,round
 from numpy.linalg import inv, det, norm, eig
 import rospy
 from std_msgs import Float64MultiArray
-from geometry_msgs import Pose2D, PoseArray
+from geometry_msgs import Pose2D, PoseArray, 
 
-K = 1  # coefficient de proportionnalité entre puissance moteur et vitesse bateau
+K = 1 
 
-liste_position = [[0, 0],[5, 5], [5, 4], [0, -1]]
 a= array([[0, 0]]).T
 b= array([[10, 10]]).T
 
@@ -77,8 +69,8 @@ def sortie_orientation_vitesse():
 
     while not rospy.is_shutdown():
         erreur_angle = traj(liste_position)       
-        msg_commande.data[0] = erreur_angle
-        msg_commande.data[1] = v
+        msg_commande.data.append(erreur_angle)
+        msg_commande.data.append(v)
         pub_commande.publish(msg_commande)
         
         rate.sleep()
