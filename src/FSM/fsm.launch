@@ -1,0 +1,22 @@
+<launch>
+
+
+    <group ns = "Boat_McBoat">
+    <param name= "position_x" type= "double" value = "-15.0"/>
+    <param name= "position_y" type= "double" value = "-15.0"/>
+
+    <param name= "position_nacelle_x" type= "double" value = "0.0"/>
+    <param name= "position_nacelle_y" type= "double" value = "0.0"/>
+    <param name= "position_nacelle_z" type= "double" value = "0.0"/>
+    <param name= "repere_nacelle" type= "string" value = "nacelle"/>
+
+
+    <node name= "cible_position" pkg= "tp3" type= "cible3"/>
+    <node name= "position_bateau" pkg= "tp3" type= "position_bat3"/>
+    <node name= "commande" pkg= "tp3" type= "controle_bateau3"/>
+    <node name= "nacelle" pkg= "tp3" type= "position_nac3"/>
+    <node name= "listener_repere" pkg= "tp3" type= "trans_nacelle_cib"/>
+
+    </group>
+
+</launch>
