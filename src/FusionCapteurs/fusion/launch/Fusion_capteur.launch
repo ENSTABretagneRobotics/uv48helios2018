@@ -1,0 +1,3 @@
+<launch>
+        <node name="Fusion_capteur" pkg="fusion" type="Fusion_capteur.py"/>
+</launch>

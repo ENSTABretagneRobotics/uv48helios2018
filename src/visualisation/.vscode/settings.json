@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/lunar/lib/python2.7/dist-packages"
+    ],
+    "files.associations": {
+        "fun_targa.h": "c"
+    }
+}

@@ -1,4 +1,5 @@
 build/
+devel/
 bin/
 lib/
 msg_gen/
@@ -28,6 +29,9 @@ msg/_*.py
 # qcreator stuff
 CMakeLists.txt.user
 
+# jetbrains stuff
+*.idea
+
 srv/_*.py
 *.pcd
 *.pyc
@@ -47,3 +51,10 @@ qtcreator-*
 CATKIN_IGNORE
 
 src/CMakeLists.txt
+<<<<<<< HEAD
+
+.vscode
+=======
+*.catkin_workspace
+src/cmake-build-debug
+>>>>>>> 52f94659db1baf2d02d48c84d7f9d351e0929682
