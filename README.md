@@ -1,6 +1,9 @@
 # uv48helios2018
 UV4.8 - ROS - Helios
 
+![Alt text](architect/NodeDiagram.jpg?raw=true "NodeDiagram")
+
+
 Responsable UV:
 ---------------
   
