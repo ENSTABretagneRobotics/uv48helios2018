@@ -1,0 +1,5 @@
+<launch>
+    <node name= "calcul_diff" pkg= "commande" type= "calcul_diff.py"/>
+    <node name= "carte_maestro" pkg= "commande" type= "carte_maestro"/>
+    <node name= "test" pkg= "commande" type= "carte_maestro"/>
+</launch>
