@@ -88,10 +88,13 @@ int main(int argc, char **argv)
   //ros::Subscriber Gps   = nh.subscribe("gps", 1000, gpsCallback);
   ros::Subscriber num   = nh.subscribe("numero", 1000, numeroCallback);//int64
   ros::Subscriber cam   = nh.subscribe("Image_compressed_Webcam",1000,webcamCallback);
+  bool connected=true;
 
   ros::Rate loop_rate(20);
-  while (ros::ok()){
+  while (true){
+    connected = ros::ok();
     ros::spinOnce();
+    loop_rate.sleep();
   }
   return 0;
 }
