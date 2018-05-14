@@ -6,24 +6,30 @@ from geometry_msgs.msg import Pose2D
 from geometry_msgs.msg import Twist
 from vibes import *
 
+global k,k2
+
+k = 10.0
+k2 = 3.0*3.14/180.0
+
 def chat_GPS(msg):
+
 
     #global pos_Bat_GPS
     #a = Interval(0.1,0.3)
     #rospy.loginfo("%s",msg.x)
-    pos_Bat_GPS = IntervalVector([[msg.x - 3.0, msg.x + 3.0,][msg.y - 3.0, msg.y + 3.0]])
+    pos_Bat_GPS = IntervalVector([[msg.x - 3.0, msg.x + 3.0],[msg.y - 3.0, msg.y + 3.0]])
     reduction(pos_Bat_GPS)
 
 def reduction(pos_Bat_GPS):
-    if (pos_Bat & pos_Bat_GPS == 0):
+    global pos_Bat
+    if ((pos_Bat & pos_Bat_GPS).is_empty()):
         pos_Bat = pos_Bat_GPS
     else:
         pos_Bat &= pos_Bat_GPS
 
 
 def chat_IMU(msg):
-    k = 10.0
-    k2 = 0.3
+    global pos_Bat_dot
     pos_Bat_dot = IntervalVector([[msg.linear.x-k,msg.linear.x + k],[msg.linear.y-k,msg.linear.y + k]])
     theta_Bat_dot = Interval(msg.angular.z - k2,msg.angular.z + k2)
 
@@ -35,9 +41,9 @@ def drawBox(x, color="b"):
 def talker():
     # Initialisation des Variables
     global pos_Bat, pos_Bat_dot, theta_Bat_dot
-    pos_Bat = IntervalVector([[0,0],[0,0]])
+    pos_Bat = IntervalVector([[-1,1],[-1,1]])
     pos_Bat_dot = IntervalVector([[0,0],[0,0]])
-    theta_Bat_dot = Interval(0,0)
+    theta_Bat_dot = Interval(0.01,0.03)
     dt = 0.1
 
     # Publishers
@@ -58,6 +64,7 @@ def talker():
         pos_Bat[0] += pos_Bat_dot[0] * cos(theta_Bat_dot) * dt
         pos_Bat[1] += pos_Bat_dot[1] * sin(theta_Bat_dot) * dt
         drawBox(pos_Bat)
+        print("boucle")
         # Remplissage des messages
         msg_coord.x = pos_Bat[0]
         msg_coord.y = pos_Bat[1]
@@ -81,4 +88,4 @@ if __name__ == '__main__':
         talker()
         vibes.endDrawing()
     except rospy.ROSInterruptException:
-        pass
+       pass
