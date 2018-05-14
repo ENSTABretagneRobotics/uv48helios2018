@@ -1,0 +1,4 @@
+<launch>
+    <node name="Reception" pkg="visualisation" type="Reception_Data"/>
+    <node name="Is_OK" pkg="visualisation" type="Bool_is_OK" respawn="true"/>
+</launch>

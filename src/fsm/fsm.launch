@@ -1,0 +1,4 @@
+<launch>
+    <node name= "test" pkg= "fsm" type= "Path_test"/>
+    <node name= "fsm" pkg= "fsm" type= "FSM" output="screen"/>
+</launch>

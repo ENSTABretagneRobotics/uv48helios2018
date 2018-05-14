@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/opt/ros/lunar/include",
+                    "/home/maxime/workspaceRos/src/tp1/include",
+                    "/home/maxime/workspaceRos/src/tp2/include",
+                    "/home/maxime/workspaceRos/src/tp3/include",
+                    "/home/maxime/workspaceRos/src/visualisation/include",
+                    "/usr/include"
+                ]
+            },
+            "includePath": [
+                "/opt/ros/lunar/include",
+                "/home/maxime/workspaceRos/src/tp1/include",
+                "/home/maxime/workspaceRos/src/tp2/include",
+                "/home/maxime/workspaceRos/src/tp3/include",
+                "/home/maxime/workspaceRos/src/visualisation/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang++-5.0",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 3
+}
