@@ -508,7 +508,6 @@ void* lasthope(void * arg){
     ros::Rate loop_rate(20);
     while(1){
         connected = ros::master::check();
-        printf("test %d",ros::master::check());
         send_wp.publish(waypoint);
         std_msgs::Bool msg;
         msg.data = bEtat;
@@ -551,9 +550,7 @@ void setDir2(GtkWidget* dir1){
 }
 
 void setSpeed(GtkWidget* speedLabel){
-
     char* cmd = (char*)calloc(100,sizeof(char));
-    //ROS_INFO("%f\n", s);
     sprintf(cmd,"<span face=\"Verdana\" foreground=\"#68838B\" size=\"x-large\"><u><b>Speed</b></u>   : %.2f m/s </span>",pow(pow(X.xp,2)+pow(X.y,2),0.5));
     gtk_label_set_text(GTK_LABEL(speedLabel),cmd);
     gtk_label_set_use_markup(GTK_LABEL(speedLabel), TRUE);
@@ -562,7 +559,6 @@ void setSpeed(GtkWidget* speedLabel){
 
 void setAlarm(GtkWidget* speedLabel){
     char* cmd = (char*)calloc(300,sizeof(char));
-    printf("Connected value %d\n",connected);
     if(connected)
         sprintf(cmd,"<span face=\"Verdana\" foreground=\"#00FF00\" size=\"x-large\"><u><b>LINK DETECTED</b></u></span>");
     else   
@@ -648,12 +644,7 @@ void loadWP(GtkButton *button,gpointer data){
         gtk_text_buffer_insert(buffer, &end, g_locale_to_utf8(lecture, -1, NULL, NULL, NULL), -1);
     }
 
-    for(int i=0;i<wplist->size;i++){
-        printf("WP %d point de (lat=%f,lon=%f)\n",i,wplist->array[i].xt,wplist->array[i].yt);
-    }
-    printf("\n");
     update_wp(wplist);
-    printf("\n");
     fclose(fp);
     return;
 }
@@ -1030,9 +1021,5 @@ void update_wp(list_t* wplist){
         waypoint.poses[i].pose.position.x = wplist->array[i].xt;
         waypoint.poses[i].pose.position.y = wplist->array[i].yt;
     }
-    ROS_INFO("Update %d",waypoint.poses.size());
-    /*for(int i=0;i<wplist->size;i++){
-        printf("WP %d point de (lat=%f,lon=%f)\n",i,waypoint.poses[i].pose.position.x,waypoint.poses[i].pose.position.y);
-    }*/
 
 }
