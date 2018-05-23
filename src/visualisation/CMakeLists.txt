@@ -16,10 +16,21 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   image_transport
   cv_bridge
+  
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+#find_package(Boost REQUIRED COMPONENTS system)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+find_package(OpenCV)
+include_directories(include ${OpenCV_INCLUDE_DIRS} ${GTK3_INCLUDE_DIRS})
+#catkin_package(DEPENDS Boost GTK3)
+pkg_check_modules(OpenCV REQUIRED opencv)
+link_directories(${OpenCV_LIBRARY_DIRS})
+link_directories(${GTK3_LIBRARY_DIRS})
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -158,6 +169,11 @@ add_executable(Bool_is_OK src/Bool_is_OK.cpp)
 # )
 target_link_libraries(Reception_Data
 	${catkin_LIBRARIES}
+	${Boost_INCLUDE_DIRS}
+    ${OpenCV_LIBRARIES}
+    ${OpenCV_CFLAGS}
+    ${GTK3_LIBRARIES}
+    ${GTK3_CFLAGS}
 )
 
 target_link_libraries(Bool_is_OK
