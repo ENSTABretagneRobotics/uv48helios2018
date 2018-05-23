@@ -189,9 +189,7 @@ void batterieCallback(const std_msgs::Float64::ConstPtr& msg){
     bat_pourcentage = msg->data;
 }
 
-void fCallback(const std_msgs::Float64::ConstPtr& msg){
-    X.x+= msg->data;
-}
+
 void moteurGCallback(const std_msgs::Float64::ConstPtr& msg){
     moteurG = msg->data;
 }
@@ -498,7 +496,6 @@ void* lasthope(void * arg){
     ros::Subscriber motd   = nh.subscribe("Int_puis_mot_D", 1000, moteurDCallback);
     ros::Subscriber vectx  = nh.subscribe("Pose_vect_X", 1000, vectorCallback);
     ros::Subscriber twist  = nh.subscribe("Twist_vect_X",1000,twistCallback);
-    ros::Subscriber fl  = nh.subscribe("f",1000,fCallback);
     ros::Subscriber num    = nh.subscribe("numero", 1000, numeroCallback);//int64
     //ros::Subscriber cam    = nh.subscribe("usb_cam/image_raw/compressed",1000,webcamCallback);
 
