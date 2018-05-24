@@ -1,0 +1,4 @@
+<launch>
+   
+    <node name= "gpsimu" pkg= "gpsimu" type="listener_GPSIMU.py" output="screen"/>
+</launch>
