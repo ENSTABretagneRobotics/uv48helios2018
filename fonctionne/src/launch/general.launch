@@ -1,0 +1,7 @@
+<launch>
+	<include file="../src/launch/commande.launch" />
+	<include file="../src/visualisation/launch/Visualisation.launch" />
+	<include file="../src/gpsimu/launch/commande.launch" />
+	<include file="../src/launch/commande.launch" />
+	<include file="../src/launch/commande.launch" />
+</launch>
